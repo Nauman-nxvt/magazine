@@ -1,0 +1,18 @@
+<div class="form-group">
+  <div class='nested-fields clear'>
+    <label  class="col-sm-2 control-label">Tag</label>
+    <div class="col-sm-10">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+</div>
+    <div class='subtags'>
+      <%= f.fields_for :subtags, :wrapper => 'inline' do |subtag| %>
+        <%= render 'subtag_fields', :f => subtag %>
+      <% end %>
+    </div>
+
+<div class='links col-lg-6 center'>
+  <%= link_to_add_association 'Add subtag', f, :subtags, :render_options => { :wrapper => 'bootstrap' }, class: 'btn btn-sm btn-default' %>
+  <%= link_to_remove_association 'Remove tag', f, class: 'btn btn-sm btn-danger' %>
+</div>

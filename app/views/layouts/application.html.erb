@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Magazine</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <header class='navbar navbar-fixed-top navbar-inverse'>
+    <div class='container'>
+      <%= link_to 'Magazine', root_path, id: 'logo' %>
+      <nav>
+        <ul class='nav navbar-nav navbar-left'>
+          <li><%= link_to 'Home', root_path %></li>
+        </ul>
+        <ul class='nav navbar-nav navbar-right'>
+          <li>
+            <% if user_signed_in? %>
+                <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+            <% end %>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class='container'>
+    <p class='alert'><%= alert %></p>
+    <%= yield %>
+  </div>
+  </body>
+</html>

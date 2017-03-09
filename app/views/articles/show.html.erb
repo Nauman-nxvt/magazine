@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @article.description %>
+</p>
+
+<p>
+  <strong>Owner name:</strong>
+  <%= @article.user.email %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <% @article.tags.each do |tag| %>
+    <p>
+      <%= tag.name %>
+      (
+      <% tag.subtags.each do |subtag| %>
+        <%= subtag.name %>
+      <% end %>
+      )
+    </p>
+      <% end %>
+</p>
+
+
+<%= link_to 'Back', articles_path, class: 'btn btn-primary' %>
